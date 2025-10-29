@@ -16,6 +16,7 @@ SKIP_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.ico', '.s
                    '.mp3', '.mp4', '.avi', '.mkv', '.flv', '.wmv', '.mov', '.webm',
                    '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
                    '.pyc', '.class', '.jar', '.war', '.ear'}
+SKIP_FILES = {'tailwind.css', 'uv.lock'}  # Skip specific minified or unwanted files
 
 
 def _build_tree(
@@ -228,7 +229,12 @@ def combine_files(
                 rel_file_path = rel_root / file
                 if not show_hidden and (rel_file_path.name.startswith('.') or any(p.startswith('.') for p in rel_root.parts)):
                     continue
+                if rel_file_path.name in SKIP_FILES:
+                    continue
                 if rel_file_path.suffix.lower() in exclude_patterns:
+                    continue
+                # Skip minified files
+                if ".min." in rel_file_path.name:
                     continue
                 abs_file_path = abs_path / rel_file_path
                 if max_size and abs_file_path.stat().st_size > max_size:
