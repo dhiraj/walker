@@ -280,10 +280,6 @@ def combine_files(
                 anchor = str(rel_file_path).replace('/', '_').replace('.', '_')
                 outfile.write(f"## {rel_file_path}\n\n")
 
-                file_size = abs_file_path.stat().st_size
-                outfile.write(f"**Size:** {file_size} bytes\n\n")
-
-                # Try to read file
                 content = _read_file_with_fallback(abs_file_path)
                 if content is not None:
                     # Syntax highlighting
