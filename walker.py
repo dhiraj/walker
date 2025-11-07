@@ -9,7 +9,7 @@ import mimetypes
 import os
 
 # Central lists for skipping directories and file extensions
-SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.next', '.nuxt', 'dist', 'build', 'venv', '.venv', 'docs'}
+SKIP_DIRS = {'.git', 'node_modules', '__pycache__', '.next', '.nuxt', 'dist', 'build', 'venv', '.venv', 'docs', 'htmlcov', '.idea', '.vscode', '.tox', '.eggs', '.pytest_cache'}
 SKIP_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.ico', '.svg',
                    '.exe', '.dll', '.so', '.dylib', '.bin', '.dat', '.db', '.sqlite', '.sqlite3',
                    '.zip', '.tar', '.gz', '.bz2', '.rar', '.7z',
